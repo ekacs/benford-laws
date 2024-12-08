@@ -1,0 +1,56 @@
+
+import matplotlib.pyplot as plt
+import numpy as np
+from collections import Counter
+from benfordslaw import benfordslaw
+
+# Initialize
+bl = benfordslaw(pos=2, alpha=0.05)  # pos=2 untuk menganalisis dua digit pertama
+
+# Load elections example
+df = bl.import_example(data='elections_usa')
+
+# Extract election information (suara untuk Donald Trump)
+X = df['votes'].loc[df['candidate']=='Donald Trump'].values
+
+# Ambil dua digit pertama dari setiap angka
+X_first_two_digits = [int(str(vote)[:2]) for vote in X if vote > 9]  # hanya angka yang lebih besar dari 9 yang memiliki dua digit pertama
+
+# Mengonversi hasil ke numpy array
+X_first_two_digits = np.array(X_first_two_digits)
+
+# Cek distribusi dua digit pertama
+digit_counts = Counter(X_first_two_digits)
+print("Distribusi Dua Digit Pertama:")
+print(digit_counts)
+
+# Fit analysis
+results = bl.fit(X_first_two_digits)
+
+# Periksa apa yang ada dalam 'results'
+print("Hasil analisis:")
+print(results)
+
+# Plotting
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Histogram of observed two first digits
+observed_counts = [digit_counts.get(i, 0) for i in range(10, 100)]
+ax.bar(range(10, 100), observed_counts, color='blue', alpha=0.7, label='Observed')
+
+# Coba ambil 'expected' atau kunci lain yang ada dalam 'results'
+try:
+    # Ganti 'expected' dengan nama yang tepat dari hasil 'results'
+    expected_counts = results['expected']  # Mungkin bisa jadi 'expected' atau nama lainnya
+    ax.plot(range(10, 100), expected_counts, color='red', label='Expected', linestyle='--', marker='o')
+except KeyError:
+    print("Kunci 'expected' tidak ditemukan. Periksa struktur dari 'results'.")
+
+# Menambahkan label dan judul
+ax.set_xlabel('Two First Digits')
+ax.set_ylabel('Frequency')
+ax.set_title('Distribution of Two First Digits for Donald Trump Votes')
+ax.legend()
+
+# Tampilkan plot
+plt.show()

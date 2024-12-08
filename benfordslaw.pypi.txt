@@ -1,0 +1,15 @@
+https://pypi.org/project/benfordslaw/
+https://erdogant.github.io/benfordslaw/pages/html/index.html
+https://github.com/erdogant/benfordslaw
+https://towardsdatascience.com/frawd-detection-using-benfords-law-python-code-9db8db474cf8
+https://colab.research.google.com/github/erdogant/benfordslaw/blob/master/notebooks/benfordslaw.ipynb
+
+reff article:
+https://www.journalofaccountancy.com/issues/2022/sep/using-benfords-law-reveal-journal-entry-irregularities.html
+https://www.journalofaccountancy.com/issues/2017/apr/excel-and-benfords-law-to-detect-fraud.html
+https://www.journalofaccountancy.com/issues/2021/nov/journal-entry-testing-excel.html
+https://real-statistics.com/other-key-distributions/benford-distribution/
+https://www.journalofaccountancy.com/issues/2017/jan/general-ledger-data-mining.html
+
+
+more user friendly and free facility is enough for me
